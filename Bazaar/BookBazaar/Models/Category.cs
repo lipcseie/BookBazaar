@@ -10,7 +10,7 @@ namespace BookBazaar.Models
         [Required]
         public string Name { get; set; }
 
-        public int DispkayOrder { get; set; }
+        public int DisplayOrder { get; set; }
 
     }
 }
