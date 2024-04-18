@@ -8,14 +8,23 @@
             <h2 class="lead text-primary">CREATE CATEGORY</h2>
             <hr/>
         </div>
-    <div class="mb-3">
-        <label>CATEGORY NAME</label>
+    <div class="mb-3 row p-1">
+        <label class="p-0">CATEGORY NAME</label>
         <input type="text" class="form-control" />
     </div>
-    <div class="mb-3">
-        <label>DISPLAY ORDER</label>
+    <div class="mb-3 row p-1">
+        <label class="p-0">DISPLAY ORDER</label>
         <input type="text" class="form-control" />
     </div>
-    <button type="submit" class="btn btn-primary style="width:150px">CREATE</button>
+    <div class="row">
+        <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-primary form-control">CREATE</button>
+        </div>
+        <div class="col-6 col-md-3">
+                <a asp-controller="Category" asp-action="Index" class="btn btn-outline-secondary bprder form-control"> BACK TO LIST</a>
+        </div>
+    </div>
+    
+       
     </div>
 </form>
