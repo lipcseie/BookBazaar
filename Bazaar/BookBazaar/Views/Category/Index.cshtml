@@ -1,14 +1,27 @@
 ﻿@model List<Category>
 
-<h1>Category List</h1>
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2 class="lead text-primary">
+                CATEGORY LIST
+            </h2>
+        </div>
+        <div class="small col-6 text-end">
+            <a asp-controller="" asp-action="" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> CREATE NEW CATEGORY
+            </a>
+        </div>
+    </div>
+
 <table class="table table-bordered table-striped">
     <thead>
     <tr>
         <th>
-            Category Name
+            CATEGORY NAME
         </th>
         <th>
-            Display Order
+            DISPALY ORDER
         </th>
     </tr>
     </thead>
@@ -27,3 +40,4 @@
         }
     </tbody>
 </table>
+</div>
