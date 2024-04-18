@@ -15,5 +15,10 @@ namespace BookBazaar.Controllers
             var objCategoryList = _context.Categories.ToList();
             return View(objCategoryList);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
