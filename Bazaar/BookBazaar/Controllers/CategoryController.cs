@@ -45,6 +45,7 @@ namespace BookBazaar.Controllers
                 return NotFound();
             }
             var category = _context.Categories.Find(id);
+
             if (category == null)
             {
                 return NotFound();
