@@ -37,5 +37,35 @@ namespace BookBazaar.Controllers
             }
             return View();
         }
+
+        public IActionResult Edit(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var category = _context.Categories.Find(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            return View(category);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Category category)
+        {
+            if (category.Name == category.DisplayOrder.ToString())
+            {
+                ModelState.AddModelError("name", "DisplayOrder cannot match the Name");
+            }
+            if (ModelState.IsValid)
+            {
+                _context.Categories.Add(category);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
     }
 }
