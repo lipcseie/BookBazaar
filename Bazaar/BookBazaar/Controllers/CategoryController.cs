@@ -33,7 +33,8 @@ namespace BookBazaar.Controllers
             { 
             _context.Categories.Add(category); 
             _context.SaveChanges();
-            return RedirectToAction("Index");
+            TempData["success"] = "CATEGORY CREATED SUCCESFULLY";
+                return RedirectToAction("Index");
             }
             return View();
         }
@@ -60,6 +61,8 @@ namespace BookBazaar.Controllers
             {
                 _context.Categories.Update(category);
                 _context.SaveChanges();
+                TempData["success"] = "CATEGORY UPDATED SUCCESFULLY";
+
                 return RedirectToAction("Index");
             }
             return View();
@@ -91,6 +94,7 @@ namespace BookBazaar.Controllers
             }
             _context.Categories.Remove(category);
             _context.SaveChanges();
+            TempData["success"] = "CATEGORY DELETED SUCCESFULLY";
             return RedirectToAction("Index");
 
         }
