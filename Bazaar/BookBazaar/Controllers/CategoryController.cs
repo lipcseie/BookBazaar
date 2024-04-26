@@ -1,5 +1,5 @@
-﻿using BookBazaar.Data;
-using BookBazaar.Models;
+﻿using Bazaar.DataAccess.Data;
+using Bazaar.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookBazaar.Controllers

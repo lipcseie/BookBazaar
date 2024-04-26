@@ -1,7 +1,7 @@
-﻿using BookBazaar.Models;
+﻿using Bazaar.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace BookBazaar.Data
+namespace Bazaar.DataAccess.Data
 {
     public class ApplicationDbContext : DbContext
     {

@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace BookBazaar.Migrations
+namespace Bazaar.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class FixingTypo : Migration
