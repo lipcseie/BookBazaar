@@ -26,16 +26,6 @@ namespace Bazaar.DataAccess.Repository
            dbSet.Add(entity);
         }
 
-        public void Delete(T entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteRange(IEnumerable<T> entities)
-        {
-            throw new NotImplementedException();
-        }
-
         public T Get(Expression<Func<T, bool>> filter)
         {
             IQueryable<T> query = dbSet;
@@ -48,5 +38,15 @@ namespace Bazaar.DataAccess.Repository
             IQueryable<T> query = dbSet;
             return query.ToList();
         }
+
+        public void Remove(T entity) 
+        {
+            dbSet.Remove(entity);
+        }
+        public void RemoveRange(IEnumerable<T> entity)
+        {
+            dbSet.RemoveRange(entity);
+        }
+
     }
 }
