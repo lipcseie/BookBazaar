@@ -7,14 +7,14 @@ namespace BookBazaar.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ICategoryRepository _categoryRepo;
-        public CategoryController(ICategoryRepository context)
+        private readonly IUnitOfWork _unitOfWork;
+        public CategoryController(IUnitOfWork unitOfWork)
         {
-            _categoryRepo = context;
+            _unitOfWork = unitOfWork;
         }
         public IActionResult Index()
         {
-            var objCategoryList = _categoryRepo.GetAll().ToList();
+            var objCategoryList = _unitOfWork.Category.GetAll().ToList();
             return View(objCategoryList);
         }
 
@@ -32,8 +32,8 @@ namespace BookBazaar.Controllers
             }
             if (ModelState.IsValid) 
             {
-                _categoryRepo.Add(category);
-                _categoryRepo.Save();
+                _unitOfWork.Category.Add(category);
+                _unitOfWork.Save();
             TempData["success"] = "CATEGORY CREATED SUCCESFULLY";
                 return RedirectToAction("Index");
             }
@@ -46,7 +46,7 @@ namespace BookBazaar.Controllers
             {
                 return NotFound();
             }
-            var category = _categoryRepo.Get(u => u.Id == id);
+            var category = _unitOfWork.Category.Get(u => u.Id == id);
 
             if (category == null)
             {
@@ -60,8 +60,8 @@ namespace BookBazaar.Controllers
         {
             if (ModelState.IsValid)
             {
-                _categoryRepo.Add(category);
-                _categoryRepo.Save();
+                _unitOfWork.Category.Add(category);
+                _unitOfWork.Save();
                 TempData["success"] = "CATEGORY UPDATED SUCCESFULLY";
 
                 return RedirectToAction("Index");
@@ -75,7 +75,7 @@ namespace BookBazaar.Controllers
             {
                 return NotFound();
             }
-            var category = _categoryRepo.Get(u => u.Id == id);
+            var category = _unitOfWork.Category.Get(u => u.Id == id);
 
             if (category == null)
             {
@@ -87,14 +87,14 @@ namespace BookBazaar.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePOST(int? id)
         {
-            Category category = _categoryRepo.Get(u => u.Id == id);
+            Category category = _unitOfWork.Category.Get(u => u.Id == id);
 
             if (category == null)
             {
                 return NotFound();
             }
-            _categoryRepo.Remove(category);
-            _categoryRepo.Save();
+            _unitOfWork.Category.Remove(category);
+            _unitOfWork.Save();
             TempData["success"] = "CATEGORY DELETED SUCCESFULLY";
             return RedirectToAction("Index");
         }
