@@ -3,8 +3,9 @@ using Bazaar.DataAccess.Repository.IRepository;
 using Bazaar.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BookBazaar.Controllers
+namespace BookBazaar.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -30,11 +31,11 @@ namespace BookBazaar.Controllers
             {
                 ModelState.AddModelError("name", "DisplayOrder cannot match the Name");
             }
-            if (ModelState.IsValid) 
+            if (ModelState.IsValid)
             {
                 _unitOfWork.Category.Add(category);
                 _unitOfWork.Save();
-            TempData["success"] = "CATEGORY CREATED SUCCESFULLY";
+                TempData["success"] = "CATEGORY CREATED SUCCESFULLY";
                 return RedirectToAction("Index");
             }
             return View();
