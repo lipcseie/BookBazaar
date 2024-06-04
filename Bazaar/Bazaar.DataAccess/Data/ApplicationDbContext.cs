@@ -11,6 +11,8 @@ namespace Bazaar.DataAccess.Data
         }
 
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Product> Products { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -20,6 +22,10 @@ namespace Bazaar.DataAccess.Data
                 new Category { Id = 3, Name = "Self-Help", DisplayOrder = 3 },
                 new Category { Id = 4, Name = "Adventure", DisplayOrder = 4 }
                 );
+
+            modelBuilder.Entity<Category>().HasData(
+                );
+
         }
     }
 }
