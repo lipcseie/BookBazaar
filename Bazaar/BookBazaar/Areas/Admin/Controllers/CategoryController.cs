@@ -47,7 +47,7 @@ namespace BookBazaar.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            var category = _unitOfWork.Category.Get(u => u.Id == id);
+            Category? category = _unitOfWork.Category.Get(u => u.Id == id);
 
             if (category == null)
             {
@@ -61,7 +61,7 @@ namespace BookBazaar.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.Category.Add(category);
+                _unitOfWork.Category.Update(category);
                 _unitOfWork.Save();
                 TempData["success"] = "CATEGORY UPDATED SUCCESFULLY";
 

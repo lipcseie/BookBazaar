@@ -53,6 +53,20 @@ namespace BookBazaar.Areas.Admin.Controllers
             return View(product);
         }
 
+        [HttpPost]
+        public IActionResult Edit(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                _unitOfWork.Product.Update(product);
+                _unitOfWork.Save();
+                TempData["success"] = "PRODUCT UPDATED SUCCESFULLY";
+
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
         public IActionResult Delete(int? id)
         {
             if (id == null || id == 0)
