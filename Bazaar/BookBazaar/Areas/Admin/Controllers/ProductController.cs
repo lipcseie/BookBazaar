@@ -16,7 +16,7 @@ namespace BookBazaar.Areas.Admin.Controllers
         public IActionResult Index()
         {
             var objProductList = _unitOfWork.Product.GetAll().ToList();
-            return View();
+            return View(objProductList);
         }
 
         public IActionResult Create()

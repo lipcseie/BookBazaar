@@ -1,4 +1,4 @@
-﻿@* @model List<Product>
+﻿@model List<Product>
 
 <div class="container">
     <div class="row pt-4 pb-3">
@@ -9,7 +9,7 @@
         </div>
         <div class="small col-6 text-end">
             <a asp-controller="Product" asp-action="Create" class="btn btn-primary">
-                <i class="bi bi-plus-circle"></i> CREATE NEW CATEGORY
+                <i class="bi bi-plus-circle"></i> CREATE NEW PRODUCT
             </a>
         </div>
     </div>
@@ -18,25 +18,43 @@
     <thead>
     <tr>
         <th>
-            CATEGORY NAME
+            Title
         </th>
         <th>
-            DISPALY ORDER
+            ISBN
         </th>
+         <th>
+            Price
+         </th>
+         <th>
+             Author
+         </th>
+         <th>
+             Category
+         </th>
         <th></th>
     </tr>
     </thead>
     <tbody>
-        @foreach(var product in Model.OrderBy(u => u.DisplayOrder))
+        @foreach(var product in Model)
         {
             
         <tr>
             <td>
-             @product.Name
+             @product.Title
             </td>
             <td>
-             @product.DisplayOrder
+             @product.ISBN
             </td>
+            <th>
+             @product.ListPrice
+            </th>
+            <th>
+             @product.Author
+            </th>
+            <th>
+            
+            </th>
             <td>
                  <div class=" w-75 btn-group" role="group">
                             <a asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id" class="btn btn-primary mx-2 rounded-end">
@@ -53,4 +71,4 @@
         }
     </tbody>
 </table>
-</div> *@
+</div>
