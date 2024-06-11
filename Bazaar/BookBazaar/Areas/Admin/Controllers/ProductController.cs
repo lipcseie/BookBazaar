@@ -1,7 +1,7 @@
 ﻿using Bazaar.DataAccess.Repository.IRepository;
 using Bazaar.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using Bazaar.Models.ViewModels;
 
 namespace BookBazaar.Areas.Admin.Controllers
 {
@@ -22,17 +22,19 @@ namespace BookBazaar.Areas.Admin.Controllers
 
         public IActionResult Create()
         {
-            IEnumerable<SelectListItem> CategoryList = _unitOfWork.Category
-            .GetAll()
-            .Select(p => new SelectListItem
-             {
-                 Text = p.Name,
-                Value = p.Id.ToString()
-             });
+            ProductViewModel productViewModel = new()
+            {
+                CategoryList = _unitOfWork.Category
+                 .GetAll()
+                 .Select(p => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
+                    {
+                        Text = p.Name,
+                        Value = p.Id.ToString()
+                    }),
+                Product = new Product()
+            };
 
-            ViewBag.CategoryList = CategoryList;
-
-            return View();
+            return View(productViewModel);
         }
 
         [HttpPost]
