@@ -1,6 +1,7 @@
 ﻿using Bazaar.DataAccess.Repository.IRepository;
 using Bazaar.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BookBazaar.Areas.Admin.Controllers
 {
@@ -21,6 +22,16 @@ namespace BookBazaar.Areas.Admin.Controllers
 
         public IActionResult Create()
         {
+            IEnumerable<SelectListItem> CategoryList = _unitOfWork.Category
+            .GetAll()
+            .Select(p => new SelectListItem
+             {
+                 Text = p.Name,
+                Value = p.Id.ToString()
+             });
+
+            ViewBag.CategoryList = CategoryList;
+
             return View();
         }
 
