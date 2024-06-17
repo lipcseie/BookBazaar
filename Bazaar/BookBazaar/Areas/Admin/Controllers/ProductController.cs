@@ -39,16 +39,26 @@ namespace BookBazaar.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(ProductViewModel obj)
+        public IActionResult Create(ProductViewModel productViewModel)
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.Product.Add(obj.Product);
+                _unitOfWork.Product.Add(productViewModel.Product);
                 _unitOfWork.Save();
                 TempData["success"] = "PRODUCT CREATED SUCCESFULLY ";
                 return RedirectToAction("Index");
             }
-            return View();
+            else
+            {
+                productViewModel.CategoryList = _unitOfWork.Category
+                        .GetAll()
+                        .Select(p => new SelectListItem
+                        {
+                            Text = p.Name,
+                            Value = p.Id.ToString()
+                        });
+                 return View(productViewModel);
+            }
         }
 
         public IActionResult Edit(int? id)
