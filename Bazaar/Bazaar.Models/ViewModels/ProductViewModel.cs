@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
 
 namespace Bazaar.Models.ViewModels
 {
@@ -6,7 +8,8 @@ namespace Bazaar.Models.ViewModels
     {
         public Product Product { get; set; }
 
-        public IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> CategoryList { get; set; }
+        [ValidateNever]
+        public IEnumerable<SelectListItem> CategoryList { get; set; }
 
     }
 }

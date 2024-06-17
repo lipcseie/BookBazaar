@@ -2,6 +2,7 @@
 using Bazaar.Models;
 using Microsoft.AspNetCore.Mvc;
 using Bazaar.Models.ViewModels;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BookBazaar.Areas.Admin.Controllers
 {
@@ -26,7 +27,7 @@ namespace BookBazaar.Areas.Admin.Controllers
             {
                 CategoryList = _unitOfWork.Category
                  .GetAll()
-                 .Select(p => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
+                 .Select(p => new SelectListItem
                     {
                         Text = p.Name,
                         Value = p.Id.ToString()
@@ -38,11 +39,11 @@ namespace BookBazaar.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Product product)
+        public IActionResult Create(ProductViewModel obj)
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.Product.Add(product);
+                _unitOfWork.Product.Add(obj.Product);
                 _unitOfWork.Save();
                 TempData["success"] = "PRODUCT CREATED SUCCESFULLY ";
                 return RedirectToAction("Index");

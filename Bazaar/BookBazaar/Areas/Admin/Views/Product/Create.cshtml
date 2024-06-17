@@ -1,13 +1,13 @@
-﻿@model Bazaar.Models.ViewModels.ProductViewModel
+﻿@model ProductViewModel
 
 <form method="post">
 
     <div class="border p-3 my-4">
         <div class="row pb-2 bg-p">
-            <h2 class="lead text-primary ">CREATE CATEGORY</h2>
+            <h2 class="lead text-primary ">CREATE PRODUCT</h2>
             <hr/>
         </div>
-    <div asp-validation-summary="ModelOnly"></div>
+        @*<div asp-validation-summary="ModelOnly"></div>*@
     <div class="mb-3 row p-1">
             <label asp-for="Product.Title" class="p-0"></label>
             <input asp-for="Product.Title" type="text" class="form-control" />
@@ -54,6 +54,11 @@
          </select>
             <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
      </div>
+    <div class="mb-3 row p-1">
+         <label asp-for="Product.ImageUrl" class="p-0"></label>
+         <input asp-for="Product.ImageUrl" type="text" class="form-control" />
+         <span asp-validation-for="Product.ImageUrl" class="text-danger"></span>
+    </div>
     <div class="row">
         <div class="col-6 col-md-3">
                 <button type="submit" class="btn btn-primary form-control">CREATE</button>
