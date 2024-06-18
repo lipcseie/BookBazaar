@@ -21,7 +21,7 @@ namespace BookBazaar.Areas.Admin.Controllers
             return View(objProductList);
         }
 
-        public IActionResult Create()
+        public IActionResult Upsert(int? id)
         {
             ProductViewModel productViewModel = new()
             {
@@ -35,11 +35,19 @@ namespace BookBazaar.Areas.Admin.Controllers
                 Product = new Product()
             };
 
-            return View(productViewModel);
+            if (id == null || id == 0)
+            {
+                // create
+                return View(productViewModel);
+            }
+                // update
+                productViewModel.Product = _unitOfWork.Product.Get(p => p.Id == id);
+                return View(productViewModel);
+            
         }
 
         [HttpPost]
-        public IActionResult Create(ProductViewModel productViewModel)
+        public IActionResult Upsert(ProductViewModel productViewModel, IFormFile? file)
         {
             if (ModelState.IsValid)
             {
