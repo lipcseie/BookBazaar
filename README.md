@@ -10,7 +10,7 @@ BookBazaar is a work-in-progress web application that aims to provide a platform
 
 ## Project Status
 
-Currently, I am working on implementing the **Prodcut** feature. This feature will allow users to Create, Update, Read, Delete categories.
+Currently, I am working on implementing the **Prodcut** feature. This feature will allow users to Create, Update, Read, Delete products.
 
 ## Planned Features
 
