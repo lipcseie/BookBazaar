@@ -19,7 +19,7 @@ Here are some of the features that are currently being worked on for BookBazaar:
 1. User Authentication: Register and log in to a personal account.
 2. Product Browsing: Browse through a wide variety of books.
 3. Shopping Cart: Add books to your cart and manage your orders.
-4. Checkout Process
+4. Checkout Process.
 
 ## Getting Started
 
